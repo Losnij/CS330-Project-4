@@ -68,6 +68,7 @@ class PersonClassifier {
     fun detect(image: Bitmap, imageRotation: Int) {
         // Inference time is the difference between the system time at the start and finish of the
         // process
+        Thread.sleep(2000)
         var inferenceTime = SystemClock.uptimeMillis()
 
         // Create preprocessor for the image.

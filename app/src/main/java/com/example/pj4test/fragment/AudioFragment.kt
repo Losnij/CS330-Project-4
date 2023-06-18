@@ -57,13 +57,15 @@ class AudioFragment: Fragment(), SnapClassifier.DetectorListener {
     override fun onResults(score: Float) {
         activity?.runOnUiThread {
             if (score > SnapClassifier.THRESHOLD) {
-                snapView.text = "SNAP"
-                snapView.setBackgroundColor(ProjectConfiguration.activeBackgroundColor)
-                snapView.setTextColor(ProjectConfiguration.activeTextColor)
-            } else {
-                snapView.text = "NO SNAP"
-                snapView.setBackgroundColor(ProjectConfiguration.idleBackgroundColor)
-                snapView.setTextColor(ProjectConfiguration.idleTextColor)
+                if (snapView.text == "A/C OFF"){
+                    snapView.text = "A/C ON"
+                    snapView.setBackgroundColor(ProjectConfiguration.activeBackgroundColor)
+                    snapView.setTextColor(ProjectConfiguration.activeTextColor)
+                } else {
+                    snapView.text = "A/C OFF"
+                    snapView.setBackgroundColor(ProjectConfiguration.idleBackgroundColor)
+                    snapView.setTextColor(ProjectConfiguration.idleTextColor)
+                }
             }
         }
     }
